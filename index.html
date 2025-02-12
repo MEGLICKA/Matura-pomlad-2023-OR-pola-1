@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>M23_OR1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+	font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+}
+
+h3 {
+	font-style: italic;
+}
+
+footer {
+	text-align: center;
+	font-weight: bold;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+<div class="container">
+<h1 id="matematika---splo%C5%A1na-matura-osnovna-raven">MATEMATIKA - SPLOŠNA MATURA (Osnovna raven)</h1>
+<p><em>Spomladanski izpitni rok, sobota, 3. junij 2023, pola 1</em></p>
+<h2 id="a-kratke-naloge">A) Kratke naloge</h2>
+<h3 id="naloga-1">Naloga 1</h3>
+<p>Dani sta množici $ A = {1, 2, 3} $ in $ B = {3, 4, 6} $. Z naštevanjem elementov zapišite množici:</p>
+<ul>
+<li>$ A \cup B $</li>
+<li>$ A \cap B $</li>
+</ul>
+<p><em>(2 točki)</em></p>
+<h3 id="re%C5%A1itev-naloge-1">Rešitev naloge 1</h3>
+<p><strong>Unija</strong>: Zapišemo vse elemente obe množic. Če se kakšen element nahaja v obeh množicah, le-tega zapišemo le enkrat.
+$$\boxed{A \cup B = {1, 2, 3, 4, 6}}$$</p>
+<p><strong>Presek</strong>: Zapišemo samo tiste elemente, ki se pojavijo v obeh množicah hkrati.
+$$\boxed{A \cap B = {3}}$$</p>
+<hr>
+<h3 id="naloga-2">Naloga 2</h3>
+<p>Izračunajte $ \frac{1}{2 + i} $ in rezultat zapišite v obliki $ a + bi $, kjer sta $ a, b \in \mathbb{R} $.</p>
+<p><em>(3 točke)</em></p>
+<h3 id="re%C5%A1itev-naloge-2">Rešitev naloge 2</h3>
+<p>Naš cilj je zapisati imenovalec kot realno število. Za kompleksna števila velja: <strong>Produkt števila in njegove konjugirane vrednosti je nenegativno realno število.</strong>
+Spomnimo se, kako izgleda konjugirano kompleksno število: $\overline{z} = \overline{a+bi}=a−bi.$ Spomnimo se tudi naslednje lastnosti števila $i$: $i^2=-1$.</p>
+<p>S pomočjo teh podatkov se lahko lotimo računanja:</p>
+<p>$$\frac{1 \cdot (2 - i)}{(2 + \mathrm{i})(2 - \mathrm{i})} = \frac{2 - i}{4 - \mathrm{i}^2} = \frac{2 - i}{4 + 1} = \frac{2 - i}{5} = \boxed{\frac{2}{5} - \frac{1}{5} i}$$</p>
+<hr>
+<h3 id="naloga-3">Naloga 3</h3>
+<p>Preoblikujte besedilo v matematični (algebrski) zapis:</p>
+<blockquote>
+<p>Od kvadrata vsote števil $ a $ in $ b $ odštejemo petkratnik kvadrata števila $ c $.</p>
+</blockquote>
+<p><em>(2 točki)</em></p>
+<h3 id="re%C5%A1itev-naloge-3">Rešitev naloge 3</h3>
+<p>Premislimo le, kaj je razlika med kvadratom vsote in vsote kvadratov: $(a+b)^2 \neq a^2 + b^2 $.</p>
+<p>Rešitev:</p>
+<p>$$\boxed{(a+b)^2 -5\cdot c^2}$$</p>
+<hr>
+<h3 id="naloga-4">Naloga 4</h3>
+<p>Poenostavite ulomek:</p>
+<p>$$
+\frac{3^{x+1}-2\cdot 3^x-3^{x-1}}{4\cdot 3^{x - 1}}
+$$</p>
+<p><em>(3 točke)</em></p>
+<h3 id="re%C5%A1itev-naloge-4">Rešitev naloge 4</h3>
+<p>Želimo se znebiti potence $3^x$ oz. neke variacije. To lahko storimo z izpostavljanjem tako, da v števcu lahko izpostavimo največji skupni faktor $3^{x-1}$. Račun je sledeč:</p>
+<p>$$\frac{3^{x-1}\cdot (3^2 - 2\cdot 3 - 1)}{4\cdot 3^{x - 1}}= \frac{9-6-1}{4}= \frac{2}{4} = \boxed{\frac{1}{2}}$$</p>
+<hr>
+<h3 id="naloga-5">Naloga 5</h3>
+<p>Izračunajte ploščino lika $ ABCDE $ na sliki.</p>
+<div style="text-align: center;">
+<img src="veckotnik.png" width="400pt"></img>
+</div>
+<p><em>(3 točke)</em></p>
+<h3 id="re%C5%A1itev-naloge-5">Rešitev naloge 5</h3>
+<p>Lik si razdelimo na dva lika:</p>
+<ol>
+<li>Pravokotnik $ABCE$</li>
+<li>Trikotnik $ECD$</li>
+</ol>
+<p>Ploščino pravokotnika izračunamo po formuli $S = a\cdot b$. Iz slike razberemo: $a = 5$ in $b = 2$.</p>
+<p>Ploščino trikotnika izračunamo po formuli $S = \frac{a\cdot v_a}{2}$. Iz slike razberemo: $a = 5$ in $v_a = 2$.</p>
+<p>Ploščina celotnega lika je enaka vsoti ploščin pravokotnika $ABCE$ in trikotnika $ECD$:</p>
+<p>$$S = 5 \cdot 2 + \frac{5 \cdot 2}{2}= 10 + \frac{10}{2} = 10 + 5 = \boxed{15}$$</p>
+<hr>
+<h3 id="naloga-6">Naloga 6</h3>
+<p>Izračunajte vrednost izraza:</p>
+<p>$$
+8 \cdot (\log_{2}{32} + 2^{-3})
+$$</p>
+<p><em>(3 točke)</em></p>
+<h3 id="re%C5%A1itev-naloge-6">Rešitev naloge 6</h3>
+<p>Pri tej nalogi bomo uporabili naslednje pravilo za računanje z logaritmi: $\log_{a}{a^b} = b \cdot \log_{a}{a} = b $, saj je $\log_{a}{a} = 1$.</p>
+<p>Rešitev:
+$$8\cdot (\log_{2}{2^5} + 2^{-3}) = 8 \cdot (5 + \frac{1}{8}) = 8 \cdot \frac{(40 + 1)}{8} = \boxed{41}$$</p>
+<hr>
+<h3 id="naloga-7">Naloga 7</h3>
+<p>Izračunajte $ \int_0^1 f(x) , dx $, če je znano:</p>
+<p>$$
+\int_0^5 f(x) , dx = 6 \quad \text{in} \quad \int_1^5 f(x) , dx = 4.
+$$</p>
+<p><em>(1 točka)</em></p>
+<h3 id="re%C5%A1itev-naloge-7">Rešitev naloge 7</h3>
+<p>Vemo, da je določeni integral <strong>aditiven</strong>. To pomeni, da za funkcijo $f$ in realna števila $a, b$ in $c$, kjer $a &lt; b &lt; c$, velja:
+$$\int_a^c f(x) , dx = \int_a^b f(x) , dx + \int_b^c f(x) , dx$$
+Pomagali si bomo tudi z naslednjim pravilom:
+$$\int_a^c f(x) , dx = - \int_c^a f(x) , dx$$</p>
+<p>Sedaj rešimo nalogo sledeče:
+$$
+\int_0^1 f(x) , dx = \int_0^5 f(x) , dx   - \int_1^5 f(x) , dx = 6 - 4 = \boxed{2}.
+$$</p>
+<hr>
+<h3 id="naloga-8">Naloga 8</h3>
+<p>Rešite kvadratno enačbo $ x^2 + 2x + 2 = 0 $ v množici kompleksnih števil.</p>
+<p><em>(3 točke)</em></p>
+<h3 id="re%C5%A1itev-naloge-8">Rešitev naloge 8</h3>
+<p>Nalogo bomo rešili s pomočjo formul za reševanje kvadratnih enačb v obliki $ax^2 + bx +c = 0$:</p>
+<p>$ x_{1,2} = \frac{-b \pm  \sqrt{D}}{2a} \text{, kjer je} \ D = b^2 - 4ac$</p>
+<p>Najprej izračunajmo diskriminanto:
+$D = 2^2 - 4\cdot 1 \cdot 2 = 4 - 8 = -4$</p>
+<p>Ker je diskriminanta negativna, bodo ničle kompleksne. Zapišimo:
+$ D =-4 = i^2 \cdot 2^2 \implies \sqrt{D} = \sqrt{2^2 \cdot i^2} = 2i$</p>
+<p>Vstavimo sedaj naše podatke v formulo za ničle:
+$ x_{1,2} = \frac{-2 \pm 2i}{2} = -1 \pm i \implies \boxed{x_1 = -1 + i} \ \text{in} \ \boxed{x_2 = -1 - i}$</p>
+<hr>
+<h2 id="b-kraj%C5%A1e-strukturirane-naloge">B) Krajše strukturirane naloge</h2>
+<h3 id="naloga-1">Naloga 1</h3>
+<p>Narišite premici z enačbama:</p>
+<ul>
+<li>$ y = -3 $</li>
+<li>$ y = -2x + 3 $</li>
+</ul>
+<p>Izračunajte ploščino trikotnika, ki ga premici oklepata z ordinatno osjo.</p>
+<p><em>(6 točk)</em></p>
+<h3 id="re%C5%A1itev-naloge-1">Rešitev naloge 1</h3>
+<ol>
+<li>Narišimo skico</li>
+<li>Izračunajmo presečišče premic:</li>
+</ol>
+<p>$$
+-3 = -2x +3
+$$</p>
+<p>$$
+-6 = -2x
+$$</p>
+<p>$$
+x = 3
+$$</p>
+<p>$$
+y = -2\cdot 3 + 3 = -3
+$$</p>
+<div style="margin-left: 40px;">
+Dobimo točko $P(3,-3)$.
+</div>
+<ol start="2">
+<li>Definirajmo točko $A = (0, -3)$, ki je presečišče premice $y = -3$ z $y$-osjo, in točko $B = (0,3)$, ki je presečišče premice $ y = -2x + 3 $ z $y$-osjo. Sedaj izračunajmo razdalji $|AB|$ in $|AP|$ po formuli $d(A,B) = |AB| = \sqrt{(x_2- x_1)^2 + (y_2 - y_1)^2}$:</li>
+</ol>
+<p>$$
+|AB| = \sqrt{(0-0)^2 + (3 - (-3))^2} = \sqrt{6^2} = 6
+$$
+$$
+|AP| = \sqrt{(3 - 0)^2 + (-3 - (-3))^2} = \sqrt{3^2} = 3
+$$</p>
+<ol start="3">
+<li>Sedaj imamo dolžino stranic $a = |AB|$ in $b = |AP|$. Ploščino pravokotnega trikotnika izračunamo po fomuli $S = \frac{a\cdot b}{2}$:
+$$S = \frac{6 \cdot 3}{2} = \frac{18}{2} = \boxed{9}$$</li>
+</ol>
+<div style="text-align: center;">
+<img src="premici_trikotnik.png" width="500pt"></img>
+</div>
+<hr>
+<h3 id="naloga-2">Naloga 2</h3>
+<p>Izračunajte osnovo $ a $ logaritemske funkcije $ f(x) = \log_a{x} $, katere graf poteka skozi točko $ A(\frac{1}{8}, -\frac{3}{2}) $.</p>
+<p><em>(6 točk)</em></p>
+<h3 id="re%C5%A1itev-naloge-2">Rešitev naloge 2</h3>
+<p>Pri reševanju naloge si bomo pomagali s povezavo: $y = \log_a{x} \iff x = a^y $.
+V enačbo vstavimo $x = \frac{1}{8}$ in $y = -\frac{3}{2}$:
+$$
+-\frac{3}{2} = \log_a{\frac{1}{8}}
+$$</p>
+<p>$$
+a^{-\frac{3}{2}} = \frac{1}{8}
+$$</p>
+<p>$$
+a^{-\frac{3}{2}} = 2^{-3}
+$$</p>
+<p>$$
+a^{-\frac{3}{2}} = 4^{-\frac{3}{2}}
+$$</p>
+<p>$$
+\boxed{a =4}
+$$</p>
+<hr>
+<h3 id="naloga-3">Naloga 3</h3>
+<p>Izračunajte ničle, pole, začetno vrednost in asimptoto funkcije  $f(x) = \frac{x^2 - 2x - 3}{x^2 - 4}$ , ter narišite njen graf.</p>
+<p><em>(8 točk)</em></p>
+<h2 id="re%C5%A1itev-naloge-3">Rešitev naloge 3</h2>
+<div style="text-align: left;">
+1. <b>Ničle:</b>
+</div>
+<p>$x^2 - 2x - 3 = 0 $</p>
+<p>$(x-3)(x+1) = 0 $</p>
+<p>$\implies \boxed{x_1 = 3, x_2= -1}$</p>
+<div style="text-align: left;">
+2. <b>Poli:</b>
+</div>
+$
+x^2 -4 = 0
+$
+<p>$
+(x-2)(x+2)=0
+$</p>
+<p>$
+\implies \boxed{x_1= 2, x_2=-2}
+$</p>
+<div style="text-align: left;">
+3. <b>Začetna vrednost:</b>
+</div>
+<p>$f(0) = \frac{-3}{-4}=\boxed{\frac{3}{4}}$</p>
+<div style="text-align: left;">
+4. <b>Asimptota:</b>
+</div>
+<p>$\boxed{y = \frac{1}{1}= 1}$</p>
+<div style="text-align: left;">
+5. Poglejmo še, <b>če graf kje seka asimptoto</b>. Sklepamo, da jo, ker ima graf na intervalu $(-2, 2)$ le eno ničlo.
+</div>
+<p>$
+(x^2 - 2x - 3):(x^2 -4)=1 \text{, ostanek je} -2x+1
+$</p>
+<p>$
+\implies -2x+1 = 0 \iff x= \frac{1}{2}
+$</p>
+<p>Torej graf seka asimptoto v točki $\boxed{(\frac{1}{2} ,1)}$.</p>
+<div style="text-align: center;">
+<img src="racionalna_fn.png" width="600pt"></img>
+</div>
+<hr>
+<h3 id="naloga-4">Naloga 4</h3>
+<p>Naj bo $ \cos{x} = \frac{1}{3} $ in $ \frac{3\pi}{2} &lt; x &lt; 2\pi $.<br>
+Izračunajte natančni vrednosti izrazov:</p>
+<ul>
+<li>$ \sin{x} $,</li>
+<li>$ \cos{(x + \frac{\pi}{4})} $.</li>
+</ul>
+<p><em>(6 točk)</em></p>
+<h3 id="re%C5%A1itve-naloge-4">Rešitve naloge 4</h3>
+<p>Ker so vrednosti $x$ med $ \frac{3\pi}{2} $ in $2\pi $, se nahajamo v 3. kvadrantu.
+Torej ima $\cos{x}$ pozitiven predznak in $\sin{x}$ negativen predznak.
+Računanje $\sin{x}$ si pomagamo s formulo $\sin^2{x}+\cos^2{x} = 1$:
+$$
+\sin^2{x} = 1 - \left( \frac{1}{3} \right) ^2 \implies \sin{x} = -\sqrt{1-\frac{1}{9}} = -\sqrt{\frac{8}{9}} = \boxed{-\frac{2\sqrt{2}}{3}}
+$$</p>
+<p>Pri drugi enačbi si pomagamo s fomulo $\cos{(\alpha + \beta)}=\cos{(\alpha)}\cos{(\beta)} - \sin{(\alpha)}\sin{(\beta)}$.</p>
+<p>$$
+\cos\left(x + \frac{\pi}{4}\right) = \cos{(x)} \cdot \cos\left(\frac{\pi}{4}\right)- \sin{(x)} \cdot \sin\left(\frac{\pi}{4}\right)=
+$$</p>
+<p>$$
+= \frac{\sqrt{2}}{2} \cos{(x)} - \frac{\sqrt{2}}{2} \sin{(x)} =
+$$</p>
+<p>$$
+= \frac{\sqrt{2}}{2} \cdot \frac{1}{3} - \frac{\sqrt{2}}{2} \cdot \left(-\frac{2\sqrt{2}}{3}\right)=
+$$</p>
+<p>$$
+= \frac{\sqrt{2}}{6} + \frac{2 \cdot 2}{6} = \boxed{\frac{4 + \sqrt{2}}{6}}
+$$</p>
+<hr>
+<h3 id="naloga-5">Naloga 5</h3>
+<p>Preverite, da je število $ x = -1 $ dvojna ničla polinoma:</p>
+<p>$$
+p(x) = 2x^4 + 7x^3 + 6x^2 - 2x - 1.
+$$</p>
+<p>Poiščite še preostali dve ničli.</p>
+<p><em>(7 točk)</em></p>
+<h3 id="re%C5%A1itev-naloge-5">Rešitev naloge 5</h3>
+<p>Nalogo bomo reševali s <strong>Hornerjevim algoritmom</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$2$</th>
+<th>$7$</th>
+<th>$6$</th>
+<th>$-1$</th>
+<th>$-2$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$-1$</td>
+<td></td>
+<td>$-2$</td>
+<td>$-5$</td>
+<td>$-1$</td>
+<td>$2$</td>
+</tr>
+<tr>
+<td></td>
+<td>$2$</td>
+<td>$5$</td>
+<td>$1$</td>
+<td>$-2$</td>
+<td>$0$</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$2$</th>
+<th>$5$</th>
+<th>$1$</th>
+<th>$-2$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$-1$</td>
+<td></td>
+<td>$-2$</td>
+<td>$-3$</td>
+<td>$2$</td>
+</tr>
+<tr>
+<td></td>
+<td>$2$</td>
+<td>$3$</td>
+<td>$-2$</td>
+<td>$0$</td>
+</tr>
+</tbody>
+</table>
+<p>Dobili smo dvojno ničlo $x_{1,2} = -1$. Naprej lahko rešujemo
+kot kvadratno enačbo $2x^2+3x-2=0$:
+$$
+D = 9+4\cdot 2\cdot 2= 25 \implies \sqrt{25} = 5
+$$</p>
+<p>$$
+x_{3,4} = \frac{-3 \pm 5}{2 \cdot 2} \implies
+x_3 = \frac{-3+5}{4}=\frac{2}{4}=\boxed{\frac{1}{2}} \quad\text{in} \quad x_4 = \frac{-3-5}{4}=\frac{-8}{4}= \boxed{-2}
+$$</p>
+<hr>
+<h3 id="naloga-6">Naloga 6</h3>
+<p>Točka $ T $ leži v prvem kvadrantu na grafu funkcije $ f(x) = 6 - x^2 $ tako, da je ploščina pravokotnika $ OATD $ maksimalna (glejte sliko).<br>
+Izračunajte ploščino pravokotnika $ OATD $.</p>
+<div style="text-align: center;">
+<img src="ekstremalni_problem.png" width="250pt"></img>
+</div>
+<p><em>(7 točk)</em></p>
+<h3 id="re%C5%A1itev-naloge-6">Rešitev naloge 6</h3>
+<ol>
+<li>Ploščina pravokotnika $ OATD $ je:</li>
+</ol>
+<p>$$ P =x \cdot y = x \cdot f(x) = x \cdot (6-x^2) = 6x -x^3 $$</p>
+<ol start="2">
+<li>Maksimum ploščine:</li>
+</ol>
+<div style="margin-left: 40px;">
+Za maksimum funkcije $ P(x) $ poiščemo kritične točke tako, da odvod $ P'(x) $ enačimo z nič.
+Izračunajmo odvod:
+</div>
+<p>$$ P'(x) = \frac{d}{dx} \big(6x - x^3\big) = 6 - 3x^2. $$</p>
+<div style="margin-left: 40px;">
+Poiščemo $ x $, kjer je $ P'(x) = 0 $:
+</div>
+<p>$$
+6 - 3x^2 = 0
+$$</p>
+<p>$$
+3x^2 = 6
+$$</p>
+<p>$$
+x^2 = 2  \implies x = \pm \sqrt{2}.
+$$</p>
+<div style="margin-left: 40px;">
+Ker je $ x > 0 $ (točka $ T $ je v prvem kvadrantu), velja: $ x = \sqrt{2}. $
+</div>
+<ol start="3">
+<li>Izračunajmo maksimalno ploščino:
+$$ f(\sqrt{2}) = 6 - (\sqrt{2})^2 = 6 - 2 = 4 $$</li>
+</ol>
+<div style="margin-left: 40px;">
+Ploščina pravokotnika je:
+</div>
+$$ P = \sqrt{2} \cdot f(\sqrt{2}) = \boxed{4\sqrt{2}}. $$
+</div>
+
+<footer>Julija Meglič, februar 2025</footer>
+</body>
+</html>
